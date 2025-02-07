@@ -53,29 +53,60 @@ Provision a Device on Vultr
 - Enable Slack Integration in Tines
 
 ### 4. Create a Slack webhook.
-Add an Action in Tines to send Slack messages whenever an alert is received from LimaCharlie.
+- Create a Slack Channel to receive alerts from LimaCharlie through Tines
 
-Incorporate Email Notifications
+  <img src="https://imgur.com/qIZ88tn.png" alt="Imgur Image" />
+  
+*Ref 4: Slack channel creation*
+- Add an Action in Tines to send Slack messages whenever an alert is received from LimaCharlie.
 
-5. In Tines, add an Email Action to send alert details (host name, IP, suspicious activity) to a designated distribution list.
-(Screenshot Opportunity: Tines Email Action configuration, showing recipients and subject line.)
-Build the Decision Workflow (Human-in-the-Loop)
+<img src="https://imgur.com/5MPZcb2.png" alt="Imgur Image" />
 
-6. In Tines, after sending an alert to Slack, prompt the user with a question: “Isolate endpoint?”
-Listen for “Yes” or “No” responses in Slack.
-(Screenshot Opportunity: Slack channel showing the automated prompt with “Yes” or “No” response options.)
-Endpoint Isolation via LimaCharlie
+*Ref 5: Tines webhook from slack*
+- Using LimaCharlie, we can gather information such as:
+  * Time 
+  * Computer name 
+  * Source IP
+  * Process
+  * Command line
+  * File Path
+  * Sensor ID
+  * Link to detection
+  * Username
+- By passing this information through Tines, we can include these details in our Slack and email alerts.
+  
+- Incorporate Email Notifications
 
-7. If Yes is received, Tines triggers an Action to call LimaCharlie’s API and isolate the Vultr device.
-If No, the workflow notifies the user to investigate further.
-(Screenshot Opportunity: Confirmation message in Slack showing the endpoint was isolated, plus the LimaCharlie console reflecting isolation status.)
-Audit & Logging
+### 5. In Tines, add an Email Action to send alert details (host name, IP, suspicious activity) to a designated distribution list.
 
-8. Ensure Tines logs every step (alert details, Slack message, user’s decision, isolation call) for future reference.
-(Screenshot Opportunity: Tines Story log showing timestamps for each action.)
-Document in Your GitHub Repository
+<img src="https://imgur.com/c1kZxX8.png" alt="Imgur Image" />
 
-In your README.md, outline each step in brief text.
-Include screenshots for each key milestone (Vultr instance creation, LimaCharlie agent install, Tines workflow, Slack messages).
-Add any Shields.io badges for the tools used (Vultr, LimaCharlie, Tines, Slack, etc.).
+*Ref 6: Tines to email Creation*
+
+- We use similar parameters to create emails with the same information as our Slack alerts.
+
+- Build the Decision Workflow (Human-in-the-Loop)
+
+### 6. In Tines, after sending an alert to Slack, prompt the user with a question: “Isolate endpoint?”
+- Listen for “Yes” or “No” responses in Slack.
+
+<img src="https://imgur.com/RTzLJL4.png" alt="Imgur Image" />
+
+*Ref 7: User Prompt triggered on alerts*
+
+### 7. Endpoint Isolation via LimaCharlie
+- If Yes is received, Tines triggers an Action to call LimaCharlie’s API and isolate the Vultr device. Tines will also send another request to LimaCharlie for that status on the isolation after the user prompt was answered.
+
+<img src="https://imgur.com/6QaX6tB.png" alt="Imgur Image" />
+
+*Ref 8:Yes, Result alert in slack*
+
+- If No, the workflow notifies the user to investigate further.
+
+<img src="https://imgur.com/DlRweEC.png" alt="Imgur Image" />
+
+*Ref 9: No, Result alert in slack*
+- Audit & Logging
+
+
 

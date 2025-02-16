@@ -107,6 +107,8 @@ Provision a Device on Vultr
 
 *Ref 9: No, Result alert in slack*
 - Audit & Logging
+## Conclusion 
 
+This project demonstrated the power of integrating security tools to automate threat detection and response. By deploying LimaCharlie on a Vultr server, orchestrating workflows through Tines, and delivering alerts via Slack and email, I created an efficient and scalable incident response pipeline. This experience not only deepened my understanding of EDR solutions and SOAR automation but also enhanced my skills in security tool integration, workflow design, and real-time alerting. The project highlights the value of automation in cybersecurity and reinforces my ability to design, implement, and document effective security solutions.
 
 
